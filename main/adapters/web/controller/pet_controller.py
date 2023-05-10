@@ -1,15 +1,10 @@
-import json
-import logging
-
 from flask import jsonify, request, Blueprint
 from injector import inject
 
 from main.adapters.web.controller.dto.pet_dto import PetDto
 from main.adapters.web.controller.mapper.pet_controller_mapper import PetControllerMapper
+from main.common import logger
 from main.domain.ports.input.create_pet_use_case import CreatePetUseCase
-
-logging.basicConfig(format='%(asctime)s %(levelname)s %(name)s %(message)s', level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 pet_blueprint = Blueprint('pet', __name__)
 
@@ -34,4 +29,4 @@ def post(use_case: CreatePetUseCase):
     created_pet_dto = PetControllerMapper.map_to_dto(created_pet)
 
     logger.info("Created pet was mapped successfully %s", created_pet_dto)
-    return jsonify(created_pet_dto.__dict__), 201
+    return jsonify(created_pet_dto.dump(created_pet_dto)), 201

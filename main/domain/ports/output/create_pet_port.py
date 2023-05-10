@@ -1,4 +1,4 @@
-class CreatePetPort:
+class SavePetPort:
 
-    def create(self, pet):
+    def save(self, pet):
         pass
