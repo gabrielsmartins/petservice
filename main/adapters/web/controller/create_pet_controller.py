@@ -6,12 +6,12 @@ from main.adapters.web.controller.mapper.pet_controller_mapper import PetControl
 from main.common import logger
 from main.domain.ports.input.create_pet_use_case import CreatePetUseCase
 
-pet_blueprint = Blueprint('pet', __name__)
+controller = Blueprint('create_pet_controller', __name__)
 
 
 @inject
-@pet_blueprint.route('/pets/v1', methods=['POST'])
-def post(use_case: CreatePetUseCase):
+@controller.route('/pets/v1', methods=['POST'])
+def create(use_case: CreatePetUseCase):
     body = request.json
     logger.info("Receiving request %s", body)
     schema = PetDto()

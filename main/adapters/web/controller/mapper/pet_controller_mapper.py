@@ -12,8 +12,11 @@ class PetControllerMapper:
     @staticmethod
     def map_to_dto(pet: Pet) -> PetDto:
         pet_dto = PetDto()
+        pet_dto.id = pet.id
         pet_dto.name = pet.name
-        pet_dto.pet_type = pet.pet_type.value[1]
+        pet_dto.type = pet.pet_type.value[1]
         pet_dto.date_of_birth = pet.date_of_birth
+        pet_dto.created_at = pet.created_at
+        pet_dto.updated_at = pet.updated_at
         return pet_dto
 

@@ -19,7 +19,7 @@ class PetPersistenceMapper:
     @staticmethod
     def map_to_domain(pet_entity: PetEntity) -> Pet:
         pet = Pet(pet_entity.name, PetType.from_code(pet_entity.type), pet_entity.date_of_birth)
-        pet_entity.id = pet.id
-        pet_entity.created_at = pet_entity.created_at
-        pet_entity.updated_at = pet_entity.updated_at
+        pet.id = pet_entity.id
+        pet.created_at = pet_entity.created_at
+        pet.updated_at = pet_entity.updated_at
         return pet
